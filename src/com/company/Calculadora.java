@@ -123,9 +123,10 @@ class LaminaCalculadora extends JPanel{
                 resultado /=x;
 
             }
-
-
-
+            else if(ultimaOperacion.equals("=")){
+                resultado = x;
+            }
+            pantalla.setText(""+ resultado);
         }
     }
     private JPanel milamina2;
@@ -136,4 +137,4 @@ class LaminaCalculadora extends JPanel{
 }
 
 
-/* Comentario chorra para probar GitHub */
+
