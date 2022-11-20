@@ -120,6 +120,9 @@ class LaminaProcesador extends JPanel{
                 estiloLetra = letras.getStyle();
                 tamanoLetra = letras.getSize();
             } else if (menu=="Regular" || menu=="Cursiva"|| menu=="Negrita"){
+                if (letras.getStyle()==1 || letras.getStyle()==2){
+                    estiloLetra = 3;
+                }
                 tipoTexto = letras.getFontName();
                 tamanoLetra = letras.getSize();
             }if (menu=="12 px" || menu=="16 px"|| menu=="20 px" || menu=="24 px"){
@@ -128,7 +131,6 @@ class LaminaProcesador extends JPanel{
             }
             miarea.setFont(new Font(tipoTexto, estiloLetra, tamanoLetra));
             System.out.println("Tipo: " + tipoTexto + ". Estilo: " + estiloLetra + ". Tamaño: "+tamanoLetra);
-
 
         }
     }
