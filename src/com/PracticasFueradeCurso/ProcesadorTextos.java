@@ -1,6 +1,12 @@
 package com.PracticasFueradeCurso;
 
+/*
+En esta rama vamos a perfeccionar el procesador de texto usando la
+clase StyledEditorKit
+ */
+
 import javax.swing.*;
+import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,32 +54,6 @@ class LaminaProcesador extends JPanel{
         ConfiguraMenu("24 px", "tamaño","",9,24 );
 
 
-        /* A MANO:
-
-        JMenuItem courier = new JMenuItem("Courier");
-        JMenuItem serif = new JMenuItem("Serif");
-        JMenuItem arial = new JMenuItem("Arial");
-
-        JMenuItem normal = new JMenuItem("Normal");
-        JMenuItem cursiva = new JMenuItem("Cursiva");
-        JMenuItem negrita = new JMenuItem("Negrita");
-
-        JMenuItem doce = new JMenuItem("12 px");
-        JMenuItem quince = new JMenuItem("15 px");
-        JMenuItem veinte = new JMenuItem("20 px");
-
-        fuente.add(courier);
-        fuente.add(serif);
-        fuente.add(arial);
-        estilo.add(normal);
-        estilo.add(cursiva);
-        estilo.add(negrita);
-        tamano.add(doce);
-        tamano.add(quince);
-        tamano.add(veinte);
-
-         */
-
         barra.add(fuente);
         barra.add(estilo);
         barra.add(tamano);
@@ -91,47 +71,33 @@ class LaminaProcesador extends JPanel{
         JMenuItem elem_menu = new JMenuItem(rotulo);
         if (menu == "fuente"){
             fuente.add(elem_menu);
+
+            if (tipo_letra=="Arial"){
+                elem_menu.addActionListener(new StyledEditorKit.FontFamilyAction("cambia_letra", "Arial"));
+            } else if (tipo_letra == "Courier") {
+                elem_menu.addActionListener(new StyledEditorKit.FontFamilyAction("cambia_letra", "Courier"));
+            } else if(tipo_letra == "Serif") {
+                elem_menu.addActionListener(new StyledEditorKit.FontFamilyAction("cambia_letra", "Serif"));
+            }
+
         } else if (menu == "estilo"){
             estilo.add(elem_menu);
+
+            if (estilos== Font.BOLD){
+                elem_menu.addActionListener(new StyledEditorKit.ItalicAction());
+            } else if (estilos==Font.ITALIC){
+                elem_menu.addActionListener(new StyledEditorKit.BoldAction());
+            }
+
         }else if (menu == "tamaño"){
             tamano.add(elem_menu);
+            elem_menu.addActionListener(new StyledEditorKit.FontSizeAction("cambia_tamaño", tam));
         }
-
-        elem_menu.addActionListener(new GestionaEventos(rotulo,tipo_letra,estilos,tam));
 
     }
 
-    private class GestionaEventos implements ActionListener {
-
-        String tipoTexto, menu;
-        int estiloLetra, tamanoLetra;
-
-        GestionaEventos(String elemento, String texto2, int estilo2, int tamLetra){
-            tipoTexto = texto2;
-            estiloLetra = estilo2;
-            tamanoLetra = tamLetra;
-            menu = elemento;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            letras = miarea.getFont();
-            if (menu=="Arial" || menu=="Courier"|| menu=="Serif"){
-                estiloLetra = letras.getStyle();
-                tamanoLetra = letras.getSize();
-            } else if (menu=="Regular" || menu=="Cursiva"|| menu=="Negrita"){
-                tipoTexto = letras.getFontName();
-                tamanoLetra = letras.getSize();
-            }if (menu=="12 px" || menu=="16 px"|| menu=="20 px" || menu=="24 px"){
-                estiloLetra = letras.getStyle();
-                tipoTexto = letras.getFontName();
-            }
-            miarea.setFont(new Font(tipoTexto, estiloLetra, tamanoLetra));
-            System.out.println("Tipo: " + tipoTexto + ". Estilo: " + estiloLetra + ". Tamaño: "+tamanoLetra);
 
 
-        }
-    }
 
     private JTextPane miarea;
     private JMenu fuente, estilo, tamano;
