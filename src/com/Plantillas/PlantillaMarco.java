@@ -11,11 +11,11 @@ public class PlantillaMarco {
 }
 class PlanMarco extends JFrame {
     public PlanMarco(){
-        setVisible(true);
-        setBounds(200,100,300,450);
+        setBounds(300,100,550,450);
         setTitle("XXXXXXXXX");
         PlanLamina milamina = new PlanLamina();
         add(milamina);
+        setVisible(true);
     }
 }
 
