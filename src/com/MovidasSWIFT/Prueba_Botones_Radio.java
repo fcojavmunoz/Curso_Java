@@ -11,11 +11,12 @@ public class Prueba_Botones_Radio {
 }
 class MarcoRadio extends JFrame {
     public MarcoRadio(){
-        setVisible(true);
+
         setBounds(300,100,550,450);
         setTitle("Botones de Radio (I)");
         LaminaRadio milamina = new LaminaRadio();
         add(milamina);
+        setVisible(true);
     }
 }
 

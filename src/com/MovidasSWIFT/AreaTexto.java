@@ -13,11 +13,12 @@ public class AreaTexto {
     }
     class MarcoText extends JFrame {
         public MarcoText(){
-            setVisible(true);
+            
             setBounds(500,300,450,450);
             setTitle("Áreas de Texto I (90)");
             LaminaText milamina = new LaminaText();
             add(milamina);
+            setVisible(true);
         }
     }
 

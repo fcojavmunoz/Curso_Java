@@ -14,11 +14,12 @@ public class BotonesRadioII {
 }
 class MarcoBotonRadioII extends JFrame {
     public MarcoBotonRadioII(){
-        setVisible(true);
+
         setBounds(300,100,550,450);
         setTitle("Botones de Radio (II)");
         LaminaBotonRadioII milamina = new LaminaBotonRadioII();
         add(milamina);
+        setVisible(true);
     }
 }
 
