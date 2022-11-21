@@ -44,9 +44,16 @@ class LaminaProcesador extends JPanel{
         ConfiguraMenu("Courier", "fuente","Courier",9,12 );
         ConfiguraMenu("Serif", "fuente","Serif",9,12 );
 
-        ConfiguraMenu("Regular", "estilo","",Font.PLAIN,12 );
-        ConfiguraMenu("Negrita", "estilo","",Font.BOLD,12 );
-        ConfiguraMenu("Cursiva", "estilo","",Font.ITALIC,12 );
+        //ConfiguraMenu("Regular", "estilo","",Font.PLAIN,12 );
+        //ConfiguraMenu("Negrita", "estilo","",Font.BOLD,12 );
+        //ConfiguraMenu("Cursiva", "estilo","",Font.ITALIC,12 );
+
+        JCheckBoxMenuItem negrita = new JCheckBoxMenuItem("Negrita", new ImageIcon("out/production/Curso_Java/com/graficos/Bold.png"));
+        JCheckBoxMenuItem cursiva = new JCheckBoxMenuItem("Cursiva", new ImageIcon("out/production/Curso_Java/com/graficos/Italic.jpeg"));
+        negrita.addActionListener(new StyledEditorKit.BoldAction());
+        cursiva.addActionListener(new StyledEditorKit.ItalicAction());
+        estilo.add(negrita);
+        estilo.add(cursiva);
 
         ConfiguraMenu("12 px", "tamaño","",9,12 );
         ConfiguraMenu("16 px", "tamaño","",9,16 );
