@@ -1,5 +1,6 @@
 package com.MovidasSWIFT;
 
+// En una segunda parte vamos a añadir iconos a varios elementos del menú (copiar, cortar y pegar).
 import javax.swing.*;
 import java.awt.*;
 
@@ -39,9 +40,9 @@ class LaminaMenu extends JPanel{
         JMenuItem abrir = new JMenuItem("Abrir");
         JMenuItem abrir_reciente = new JMenuItem("Abrir reciente");
         JMenuItem cerrar = new JMenuItem("Cerrar proyecto");
-        JMenuItem copiar = new JMenuItem("Copiar");
-        JMenuItem cortar = new JMenuItem("Cortar");
-        JMenuItem pegar = new JMenuItem("Pegar");
+        JMenuItem copiar = new JMenuItem("Copiar", new ImageIcon("out/production/Curso_Java/com/graficos/copiar.png"));
+        JMenuItem cortar = new JMenuItem("Cortar", new ImageIcon("out/production/Curso_Java/com/graficos/cortar.png"));
+        JMenuItem pegar = new JMenuItem("Pegar", new ImageIcon("out/production/Curso_Java/com/graficos/pegar.png"));
         JMenuItem deshacer = new JMenuItem("Deshacer");
         JMenuItem herramientasWindow = new JMenuItem("Herramientas de ventana");
         JMenuItem apariencia = new JMenuItem("Apariencia");
