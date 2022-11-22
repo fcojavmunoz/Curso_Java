@@ -55,10 +55,29 @@ class LaminaProcesador extends JPanel{
         estilo.add(negrita);
         estilo.add(cursiva);
 
-        ConfiguraMenu("12 px", "tamaño","",9,12 );
-        ConfiguraMenu("16 px", "tamaño","",9,16 );
-        ConfiguraMenu("20 px", "tamaño","",9,20 );
-        ConfiguraMenu("24 px", "tamaño","",9,24 );
+       // ConfiguraMenu("12 px", "tamaño","",9,12 );
+       // ConfiguraMenu("16 px", "tamaño","",9,16 );
+       // ConfiguraMenu("20 px", "tamaño","",9,20 );
+       // ConfiguraMenu("24 px", "tamaño","",9,24 );
+
+        ButtonGroup tamano_letra= new ButtonGroup();
+        JRadioButtonMenuItem doce = new JRadioButtonMenuItem("12");
+        JRadioButtonMenuItem quince = new JRadioButtonMenuItem("15");
+        JRadioButtonMenuItem veinte = new JRadioButtonMenuItem("20");
+        JRadioButtonMenuItem veinticuatro = new JRadioButtonMenuItem("24");
+        tamano_letra.add(doce);
+        tamano_letra.add(quince);
+        tamano_letra.add(veinte);
+        tamano_letra.add(veinticuatro);
+        doce.addActionListener(new StyledEditorKit.FontSizeAction("cambia_tamaño", 12));
+        quince.addActionListener(new StyledEditorKit.FontSizeAction("cambia_tamaño", 15));
+        veinte.addActionListener(new StyledEditorKit.FontSizeAction("cambia_tamaño", 20));
+        veinticuatro.addActionListener(new StyledEditorKit.FontSizeAction("cambia_tamaño", 24));
+        tamano.add(doce);
+        tamano.add(quince);
+        tamano.add(veinte);
+        tamano.add(veinticuatro);
+
 
 
         barra.add(fuente);
