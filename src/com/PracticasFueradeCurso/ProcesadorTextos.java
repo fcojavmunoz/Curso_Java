@@ -10,6 +10,8 @@ import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 public class ProcesadorTextos {
     public static void main(String[] args) {
@@ -44,14 +46,45 @@ class LaminaProcesador extends JPanel{
         ConfiguraMenu("Courier", "fuente","Courier",9,12 );
         ConfiguraMenu("Serif", "fuente","Serif",9,12 );
 
-        ConfiguraMenu("Regular", "estilo","",Font.PLAIN,12 );
+        //ConfiguraMenu("Regular", "estilo","",Font.PLAIN,12 );
         ConfiguraMenu("Negrita", "estilo","",Font.BOLD,12 );
         ConfiguraMenu("Cursiva", "estilo","",Font.ITALIC,12 );
 
-        ConfiguraMenu("12 px", "tamaño","",9,12 );
-        ConfiguraMenu("16 px", "tamaño","",9,16 );
-        ConfiguraMenu("20 px", "tamaño","",9,20 );
-        ConfiguraMenu("24 px", "tamaño","",9,24 );
+       // JCheckBoxMenuItem negrita = new JCheckBoxMenuItem("Negrita", new ImageIcon("out/production/Curso_Java/com/graficos/Bold.png"));
+       // JCheckBoxMenuItem cursiva = new JCheckBoxMenuItem("Cursiva", new ImageIcon("out/production/Curso_Java/com/graficos/Italic.jpeg"));
+       // negrita.addActionListener(new StyledEditorKit.BoldAction());
+       // cursiva.addActionListener(new StyledEditorKit.ItalicAction());
+       // estilo.add(negrita);
+       // estilo.add(cursiva);
+
+       // ConfiguraMenu("12 px", "tamaño","",9,12 );
+       // ConfiguraMenu("16 px", "tamaño","",9,16 );
+       // ConfiguraMenu("20 px", "tamaño","",9,20 );
+       // ConfiguraMenu("24 px", "tamaño","",9,24 );
+
+        ButtonGroup tamano_letra= new ButtonGroup();
+        JRadioButtonMenuItem doce = new JRadioButtonMenuItem("12");
+        JRadioButtonMenuItem quince = new JRadioButtonMenuItem("15");
+        JRadioButtonMenuItem veinte = new JRadioButtonMenuItem("20");
+        JRadioButtonMenuItem veinticuatro = new JRadioButtonMenuItem("24");
+
+        // Incluir atajos de teclado (que convierta el tamaño de letra a 24 al pulsar ALT + D.
+        // veinticuatro.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.ALT_DOWN_MASK));
+
+
+        tamano_letra.add(doce);
+        tamano_letra.add(quince);
+        tamano_letra.add(veinte);
+        tamano_letra.add(veinticuatro);
+        doce.addActionListener(new StyledEditorKit.FontSizeAction("cambia_tamaño", 12));
+        quince.addActionListener(new StyledEditorKit.FontSizeAction("cambia_tamaño", 15));
+        veinte.addActionListener(new StyledEditorKit.FontSizeAction("cambia_tamaño", 20));
+        veinticuatro.addActionListener(new StyledEditorKit.FontSizeAction("cambia_tamaño", 24));
+        tamano.add(doce);
+        tamano.add(quince);
+        tamano.add(veinte);
+        tamano.add(veinticuatro);
+
 
 
         barra.add(fuente);
@@ -64,6 +97,22 @@ class LaminaProcesador extends JPanel{
 
         miarea = new JTextPane();
         add(miarea,BorderLayout.CENTER);
+
+        // Construimos el menú emergente
+        JPopupMenu emergente = new JPopupMenu();
+        // Añadimos los elementos al menú
+        JMenuItem negrita_e = new JMenuItem("Negrita");
+        JMenuItem cursiva_e = new JMenuItem("Cursiva");
+
+        negrita_e.addActionListener(new StyledEditorKit.BoldAction());
+        cursiva_e.addActionListener(new StyledEditorKit.ItalicAction());
+
+        emergente.add(negrita_e);
+        emergente.add(cursiva_e);
+
+        // Para que aparezca al hacer click en la lámina con el botón izquierdo.
+        //setComponentPopupMenu(emergente); (sale el menú al hacer click en la lámina)
+        miarea.setComponentPopupMenu(emergente);
 
     }
 
@@ -84,9 +133,11 @@ class LaminaProcesador extends JPanel{
             estilo.add(elem_menu);
 
             if (estilos== Font.BOLD){
-                elem_menu.addActionListener(new StyledEditorKit.ItalicAction());
-            } else if (estilos==Font.ITALIC){
+                elem_menu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_K,InputEvent.CTRL_DOWN_MASK));
                 elem_menu.addActionListener(new StyledEditorKit.BoldAction());
+            } else if (estilos==Font.ITALIC){
+                elem_menu.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I,InputEvent.CTRL_DOWN_MASK));
+                elem_menu.addActionListener(new StyledEditorKit.ItalicAction());
             }
 
         }else if (menu == "tamaño"){
