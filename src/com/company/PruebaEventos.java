@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 public class PruebaEventos {
     public static void main(String[] args) {
-        MarcoBotones2 mimarco = new MarcoBotones2();
+        MarcoBotones mimarco = new MarcoBotones();
         mimarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
@@ -16,11 +16,12 @@ public class PruebaEventos {
 
 class MarcoBotones extends JFrame {
     public MarcoBotones(){
-        setVisible(true);
+
         setBounds(100,100,600,600);
         setTitle("Eventos y botones");
         LaminaBotones2 milamina = new LaminaBotones2();
         add(milamina);
+        setVisible(true);
 
     }
 

@@ -1,8 +1,8 @@
-package com.PracticasFueradeCurso;
+package com.PracticasFueradeCurso.RetosMoureDev;
 
 import java.util.Scanner;
 
-public class fizzbuzz {
+public class Reto0 {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Introduce el comienzo de la serie: ");
