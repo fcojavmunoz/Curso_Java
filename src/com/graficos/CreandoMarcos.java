@@ -7,9 +7,10 @@ public class CreandoMarcos {
     public static void main(String[] args) {
         miMarco marco1 = new miMarco();
         // Hacer visible la ventana
-        marco1.setVisible(true);
+
         // También hay que indicar qué hace el programa al cerrarse.
         marco1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        marco1.setVisible(true);
 
     }
 }

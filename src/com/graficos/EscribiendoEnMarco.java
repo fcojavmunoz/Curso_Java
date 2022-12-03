@@ -24,7 +24,7 @@ class MarcoTexto extends JFrame{
     }
 }
 
-// Vamos a crear una lámina transparente por encia para poner incluir el texto:
+// Vamos a crear una lámina transparente por encima para poner incluir el texto:
 
 class Lamina extends JPanel{
     public void paintComponent(Graphics g){
